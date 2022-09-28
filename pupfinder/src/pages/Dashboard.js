@@ -1,49 +1,47 @@
 import TinderCard from "react-tinder-card";
 import { useState } from "react";
+import ChatContainer from "../components/ChatContainer";
+
 
 const Dashboard = () => {
-
   const characters = [
     {
-      name: "Richard Hendricks",
-      url:""
+      name: "Lucky",
+      url: "https://i.imgur.com/vjWuXdo.jpeg",
     },
     {
-      name: "Erlich Backman",
-      url:""
+      name: "Patches",
+      url: "https://i.imgur.com/vjWuXdo.jpeg",
     },
     {
-      name: "Monica Hall",
-      url:""
+      name: "Juneau",
+      url: "https://i.imgur.com/vjWuXdo.jpeg",
     },
     {
-      name: "Jared Dunn",
-      url: ""
+      name: "Rocky",
+      url: "https://i.imgur.com/vjWuXdo.jpeg",
     },
     {
-      name: "Dinesh Chugtai",
-      url: ""
-    }
-  ]
+      name: "Bruiser",
+      url: "https://i.imgur.com/vjWuXdo.jpeg",
+    },
+  ];
 
-
-
-  
-  const [lastDirection, setLastDirection] = useState()
+  const [lastDirection, setLastDirection] = useState();
 
   const swiped = (direction, nameToDelete) => {
-    console.log("removing:" + nameToDelete)
-    setLastDirection(direction)
-  }
+    console.log("removing: " + nameToDelete);
+    setLastDirection(direction);
+  };
 
   const outOfFrame = (name) => {
-    console.log(name + ' left the screen!')
-  }
-
+    console.log(name + " left the screen!");
+  };
 
   return (
     <div className="dashboard">
-      <div className="swiper-container">
+      <ChatContainer />
+      <div className="swipe-container">
         <div className="card-container">
           {characters.map((character) => (
             <TinderCard
@@ -60,10 +58,37 @@ const Dashboard = () => {
               </div>
             </TinderCard>
           ))}
+
+          <div className="swipe-info">
+            {lastDirection ? <p>You swiped {lastDirection}</p> : <p />}
+          </div>
         </div>
       </div>
     </div>
   );
 };
+
+// const characters = [
+//   {
+//     name: "Richard Hendricks",
+//     url:""
+//   },
+//   {
+//     name: "Erlich Backman",
+//     url:""
+//   },
+//   {
+//     name: "Monica Hall",
+//     url:""
+//   },
+//   {
+//     name: "Jared Dunn",
+//     url: ""
+//   },
+//   {
+//     name: "Dinesh Chugtai",
+//     url: ""
+//   }
+// ]
 
 export default Dashboard;
